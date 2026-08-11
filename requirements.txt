@@ -8,4 +8,7 @@ seaborn
 shap                
 streamlit           
 joblib              
-pytest  
+pytest 
+jupyterlab
+ipykernel
+pyarrow

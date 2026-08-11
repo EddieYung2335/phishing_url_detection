@@ -26,13 +26,31 @@ Python 3.13.7.
 
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate        # fish: source .venv/bin/activate.fish
+source .venv/bin/activate        
 pip install -r requirements.txt
 ```
 
-The dataset is not committed. Download the
+## Getting the data
+
+The dataset is not committed. There are two ways to fetch it.
+
+Manually: open the
 [PhiUSIIL Phishing URL Dataset](https://www.kaggle.com/datasets/ndarvind/phiusiil-phishing-url-dataset)
-and put the CSV in `data/raw/`.
+page, click Download, unzip it, and move the CSV into `data/raw/`.
+
+Or with the Kaggle CLI, which is reproducible but needs an API token. Get the
+token from your Kaggle account under Settings, API, Create New API Token. It
+downloads as `kaggle.json`.
+
+```bash
+pip install kaggle
+mkdir -p ~/.kaggle && mv ~/Downloads/kaggle.json ~/.kaggle/
+chmod 600 ~/.kaggle/kaggle.json
+kaggle datasets download -d ndarvind/phiusiil-phishing-url-dataset -p data/raw --unzip
+```
+
+`kaggle` is deliberately not in `requirements.txt`. You need it once to get the
+data, not to run anything in the project.
 
 ## Layout
 
